@@ -1,10 +1,9 @@
-import { createMuiTheme } from '@material-ui/core/styles';
+import { createTheme } from "@material-ui/core/styles";
 
-const theme = createMuiTheme({
-    "shape": {
-        "borderRadius": 8
-    }
+const theme = createTheme({
+  shape: {
+    borderRadius: 8,
+  },
 });
 
 export default theme;
-

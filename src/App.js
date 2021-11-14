@@ -11,12 +11,9 @@ import { setUser } from "features/authentication/authSlice";
 
 function App() {
   const dispatch = useDispatch();
-  const [value, setValue, remove] = useLocalStorage("user-token", "foo");
+  const [value, setValue, remove] = useLocalStorage("user-key");
   useLayoutEffect(() => {
-    let promise = "";
-    if (value) {
-      promise = dispatch(setUser(JSON.parse(value)));
-    }
+    let promise = dispatch(setUser(value));
     return () => {
       promise.abort();
     };

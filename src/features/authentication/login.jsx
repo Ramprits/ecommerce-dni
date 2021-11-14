@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function LoginForm(props) {
-  const [value, setValue, remove] = useLocalStorage("user-key", "foo");
+  const [value, setValue, remove] = useLocalStorage("user-key");
   const history = useHistory();
   const dispatch = useDispatch();
   const classes = useStyles();

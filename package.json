@@ -12,12 +12,15 @@
     "@material-ui/core": "latest",
     "@material-ui/icons": "^4.9.1",
     "@reduxjs/toolkit": "^1.6.2",
+    "axios": "^0.24.0",
     "clsx": "latest",
     "react": "latest",
     "react-dom": "latest",
+    "react-hook-form": "^7.19.5",
     "react-redux": "^7.2.6",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "latest"
+    "react-scripts": "latest",
+    "react-use": "^17.3.1"
   },
   "devDependencies": {
     "eslint": "^7.30.0",

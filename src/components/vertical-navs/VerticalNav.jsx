@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from "react";
 
+import { useSelector } from "react-redux";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
@@ -21,6 +22,7 @@ import AttachMoneyIcon from "@material-ui/icons/AttachMoney";
 import useStyles from "./styles";
 
 export default function Navigation(props) {
+  const { isAuthenticated } = useSelector((state) => state.auth);
   const classes = useStyles();
 
   const content = {
@@ -96,12 +98,16 @@ export default function Navigation(props) {
           >
             {brandSmall}
           </Link>
-          <Button color="inherit" className={classes.secondaryButton}>
-            {content["secondary-action"]}
-          </Button>
-          <Button variant="contained" color="secondary">
-            {content["primary-action"]}
-          </Button>
+          {isAuthenticated === false && (
+            <>
+              <Button color="inherit" className={classes.secondaryButton}>
+                {content["secondary-action"]}
+              </Button>
+              <Button variant="contained" color="secondary">
+                {content["primary-action"]}
+              </Button>
+            </>
+          )}
         </Toolbar>
       </AppBar>
       <Drawer

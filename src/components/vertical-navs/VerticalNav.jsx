@@ -2,6 +2,7 @@
 import React from "react";
 
 import { useSelector } from "react-redux";
+import { Link as CustomLink } from "react-router-dom";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
@@ -16,9 +17,11 @@ import ListItemText from "@material-ui/core/ListItemText";
 
 import MenuIcon from "@material-ui/icons/Menu";
 import AppsIcon from "@material-ui/icons/Apps";
+
 import BusinessCenterIcon from "@material-ui/icons/BusinessCenter";
 import LiveHelpIcon from "@material-ui/icons/LiveHelp";
-import AttachMoneyIcon from "@material-ui/icons/AttachMoney";
+
+import SimpleMenu from "components/Profile-menu";
 import useStyles from "./styles";
 
 export default function Navigation(props) {
@@ -31,10 +34,9 @@ export default function Navigation(props) {
       image: "mui-assets/img/logo-pied-piper-white-icon.png",
       width: 32,
     },
-    link1: "Features",
-    link2: "Enterprise",
+    home: "Home",
+    product: "Product",
     link3: "Support",
-    link4: "ICO",
     "secondary-action": "Sign in",
     "primary-action": "Sign up",
     ...props.content,
@@ -81,7 +83,8 @@ export default function Navigation(props) {
             <MenuIcon />
           </IconButton>
           <Link
-            href="#"
+            component={CustomLink}
+            to="/"
             variant="h5"
             color="inherit"
             underline="none"
@@ -90,7 +93,8 @@ export default function Navigation(props) {
             {brand}
           </Link>
           <Link
-            href="#"
+            component={CustomLink}
+            to="/"
             variant="h5"
             color="inherit"
             underline="none"
@@ -108,6 +112,8 @@ export default function Navigation(props) {
               </Button>
             </>
           )}
+
+          {isAuthenticated && <SimpleMenu />}
         </Toolbar>
       </AppBar>
       <Drawer
@@ -118,59 +124,48 @@ export default function Navigation(props) {
         <Toolbar />
         <div className={classes.drawerContainer}>
           <List>
-            <ListItem button key={content["link1"]}>
+            <ListItem button key={content["home"]} component={CustomLink} to="/">
               <ListItemIcon>
                 <AppsIcon />
               </ListItemIcon>
-              <ListItemText primary={content["link1"]} />
+              <ListItemText primary={content["home"]} />
             </ListItem>
-            <ListItem button key={content["link2"]}>
+            <ListItem button key={content["product"]} component={CustomLink} to="/product">
               <ListItemIcon>
                 <BusinessCenterIcon />
               </ListItemIcon>
-              <ListItemText primary={content["link2"]} />
+              <ListItemText primary={content["product"]} />
             </ListItem>
-            <ListItem button key={content["link3"]}>
+            <ListItem button key={content["link3"]} component={CustomLink} to="/support">
               <ListItemIcon>
                 <LiveHelpIcon />
               </ListItemIcon>
               <ListItemText primary={content["link3"]} />
-            </ListItem>
-            <ListItem button key={content["link4"]}>
-              <ListItemIcon>
-                <AttachMoneyIcon />
-              </ListItemIcon>
-              <ListItemText primary={content["link4"]} />
             </ListItem>
           </List>
         </div>
       </Drawer>
       <Drawer anchor="left" open={state.open} onClose={toggleDrawer(false)}>
+        <Toolbar />
         <div className={classes.drawerContainer}>
           <List>
-            <ListItem button key={content["link1"]}>
+            <ListItem button key={content["home"]} component={CustomLink} to="/">
               <ListItemIcon>
                 <AppsIcon />
               </ListItemIcon>
-              <ListItemText primary={content["link1"]} />
+              <ListItemText primary={content["home"]} />
             </ListItem>
-            <ListItem button key={content["link2"]}>
+            <ListItem button key={content["product"]} component={CustomLink} to="/product">
               <ListItemIcon>
                 <BusinessCenterIcon />
               </ListItemIcon>
-              <ListItemText primary={content["link2"]} />
+              <ListItemText primary={content["product"]} />
             </ListItem>
-            <ListItem button key={content["link3"]}>
+            <ListItem button key={content["link3"]} component={CustomLink} to="/support">
               <ListItemIcon>
                 <LiveHelpIcon />
               </ListItemIcon>
               <ListItemText primary={content["link3"]} />
-            </ListItem>
-            <ListItem button key={content["link4"]}>
-              <ListItemIcon>
-                <AttachMoneyIcon />
-              </ListItemIcon>
-              <ListItemText primary={content["link4"]} />
             </ListItem>
           </List>
         </div>

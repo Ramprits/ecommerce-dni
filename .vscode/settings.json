@@ -1,0 +1,15 @@
+{
+  "cSpell.words": ["hookform", "navs"],
+  "sqltools.connections": [
+    {
+      "previewLimit": 50,
+      "server": "localhost",
+      "port": 5432,
+      "driver": "PostgreSQL",
+      "name": "oclm_project",
+      "database": "oclm",
+      "username": "postgres",
+      "password": "plumtree"
+    }
+  ]
+}

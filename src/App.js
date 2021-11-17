@@ -7,8 +7,10 @@ import history from "helper/history.js";
 import { Router, Switch, HashRouter } from "react-router-dom";
 
 const IndexPage = lazy(() => import("features/Index"));
+const SupportPage = lazy(() => import("features/support"));
 const LoginForm = lazy(() => import("features/authentication/login"));
 const RegisterForm = lazy(() => import("features/authentication/register"));
+const ProductPage = lazy(() => import("features/product"));
 
 import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "features/authentication/authSlice";
@@ -26,7 +28,6 @@ function App() {
   const classes = useStyles();
   const dispatch = useDispatch();
   const [value, setValue, remove] = useLocalStorage("user-key");
-  console.log(value);
   useLayoutEffect(() => {
     if (value !== undefined) {
       dispatch(setUser(value));
@@ -49,6 +50,18 @@ function App() {
               exact
               path="/"
               component={IndexPage}
+            ></PrivateRoute>
+            <PrivateRoute
+              isAuthenticated={isAuthenticated}
+              exact
+              path="/support"
+              component={SupportPage}
+            ></PrivateRoute>
+            <PrivateRoute
+              isAuthenticated={isAuthenticated}
+              exact
+              path="/product"
+              component={ProductPage}
             ></PrivateRoute>
             <PublicRoute
               isAuthenticated={isAuthenticated}
